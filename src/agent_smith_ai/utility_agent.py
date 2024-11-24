@@ -569,7 +569,9 @@ def _context_size(model: str = "gpt-3.5-turbo-0613") -> int:
     Returns:
         int: The context size for the given model."""
 
-    if model in ['gpt-4-turbo', 
+    if model in ['gpt-4-turbo',
+                 'gpt-4o',
+                 'gpt-4o-mini',
                  'gpt-4-turbo-2024-04-09',
                  'gpt-4-turbo-preview',
                  'gpt-4-0125-preview',
