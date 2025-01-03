@@ -569,7 +569,9 @@ def _context_size(model: str = "gpt-3.5-turbo-0613") -> int:
     Returns:
         int: The context size for the given model."""
 
-    if model in ['gpt-4-turbo', 
+    if model in ['gpt-4-turbo',
+ 		         'gpt-4o-mini',
+		         'gpt-4o',
                  'gpt-4-turbo-2024-04-09',
                  'gpt-4-turbo-preview',
                  'gpt-4-0125-preview',
@@ -621,7 +623,7 @@ def _num_tokens_from_messages(messages: List[Dict[str, Any]], model="gpt-3.5-tur
     try:
         encoding = tiktoken.encoding_for_model(model)
     except KeyError:
-        print("Warning: model not found. Using cl100k_base encoding.")
+        print(f"Warning: model {model} not found. Using cl100k_base encoding.")
         encoding = tiktoken.get_encoding("cl100k_base")
     if model in {
         "gpt-3.5-turbo-0613",
@@ -630,6 +632,8 @@ def _num_tokens_from_messages(messages: List[Dict[str, Any]], model="gpt-3.5-tur
         "gpt-4-32k-0314",
         "gpt-4-0613",
         "gpt-4-32k-0613",
+	    "gpt-4o",
+	    "gpt-4o-mini",
         }:
         tokens_per_message = 3
         tokens_per_name = 1
